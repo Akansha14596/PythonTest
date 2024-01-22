@@ -1,14 +1,17 @@
 Feature: Testing the Hello text on a webpage
 
-  Scenario: Check if the page contains following text 
+    Scenario Outline: Using dynamic values
     Given the user open "index.html" page
-    And I have the following items in an array:
-    """ 
-    Hello 1,Hello 2,Hello 3,
-    """
-    Then the array should be displayed on the page
-    And the "DummyData" should not be displayed on the page
+    When I check if the HTML page contains the string "<string_value>"
+    Then the result should be "<expected_result>"
     And close browser
+
+    Examples: 
+    | string_value | expected_result |
+    | Hello 1 | Present |
+    | Hello 2 | Present |
+    | Hello 3 | Present |
+    | DummyData | NotPresent |
 
     
 
